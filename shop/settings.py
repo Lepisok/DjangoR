@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'authors',
     'userapp',
     'rest_framework',
+    'todoapp',
 ]
 
 MIDDLEWARE = [
