@@ -1,10 +1,13 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 from uuid import uuid4
 
+from django.db.models.fields import UUIDField
 
-class CustomUser(models.Model):
-    uid = models.UUIDField(primary_key=True, default=uuid4)
-    user_name = models.CharField(max_length=64, unique=True)
-    email = models.CharField(max_length=128, unique=True)
-    first_name = models.CharField(max_length=64)
-    last_name = models.CharField(max_length=64)
+
+class CustomUser(AbstractUser):
+    uuid = UUIDField(primary_key=True, default=uuid4)
+    email = models.EmailField(unique=True)
+
+    class Meta:
+        ordering = ['uuid']
