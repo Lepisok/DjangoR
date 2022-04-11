@@ -1,9 +1,12 @@
+from email.policy import default
+from http import server
 from rest_framework.viewsets import ModelViewSet
 from .serializers import ProjectSerializer, ToDoSerializer
 from .models import Project, ToDo
 from .filters import ProjectFilter, ToDoFilter
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.response import Response
+from rest_framework import mixins, viewsets, permissions
 
 
 class ProjectLimitOffsetPagination(LimitOffsetPagination):
@@ -15,6 +18,7 @@ class ProjectViewSet(ModelViewSet):
     queryset = Project.objects.all()
     filterset_class = ProjectFilter
     pagination_class = ProjectLimitOffsetPagination
+    permission_classes = [permissions.IsAuthenticated]
 
 
 class ToDoLimitOffsetPagination(LimitOffsetPagination):
