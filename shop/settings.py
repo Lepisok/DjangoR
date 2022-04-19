@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     "django_filters",
     "corsheaders",
+    "graphene_django",
     "userapp",
     "todoapp",
 ]
@@ -139,4 +140,8 @@ REST_FRAMEWORK = {
     'DEFAULT_VERSIONING_CLASS': 'rest_framework.versioning.AcceptHeaderVersioning',
 
 
+}
+
+GRAPHENE = {
+    "SCHEMA": "DRM_proj.schema.schema"
 }
